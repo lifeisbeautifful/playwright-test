@@ -1,0 +1,19 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "POM": "npx playwright test POM.spec.ts",
+    "start": "ng serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@faker-js/faker": "^9.8.0",
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^24.0.3",
+    "dotenv": "^17.4.2"
+  }
+}
