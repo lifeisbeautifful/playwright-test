@@ -1,14 +1,20 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "skipLibCheck": true,
+    //"ignoreDeprecations": "6.0", // прибирає варнінг про старі версії
+    "skipDefaultLibCheck": true,
+    "module": "ESNext",
+    "target": "ESNext",
     "importHelpers": true,
-    "module": "es2020",
+    //"module": "es2020",
+    //"noEmit": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "target": "es2020",
+    //"target": "es2020",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -19,5 +25,6 @@
     "plugins": [
       { "name": "tslint-language-service"}
     ]
-  }
+  },
+  "exclude": ["node_modules", "node_modules/@eslint", "tests", "dist", "eslint.config.js"]
 }

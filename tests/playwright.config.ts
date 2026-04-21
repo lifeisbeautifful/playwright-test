@@ -7,7 +7,7 @@ import path from 'path';
  * https://github.com/motdotla/dotenv
  */
 
-dotenv.config({ path: path.join(process.cwd(), 'test-results') });
+dotenv.config({ path: path.join(process.cwd(), 'tests', '.env') });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
