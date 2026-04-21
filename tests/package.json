@@ -2,10 +2,14 @@
   "name": "tests",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "POM": "npx playwright test POM.spec.ts",
     "start": "ng serve",
-    "check": "npx prettier --write ."
+    "check": "npx prettier --write .",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "fixlint": "npm run lint:fix && npm run format"
   },
   "keywords": [],
   "author": "",

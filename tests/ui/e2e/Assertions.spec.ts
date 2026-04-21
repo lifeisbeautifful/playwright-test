@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Assertions', () => {
+test.describe('assertions', () => {
   test.beforeEach('Form layouts navigation', async ({ page }) => {
     await page.goto('/');
     await page.getByTitle('Forms').click();
@@ -8,7 +8,7 @@ test.describe('Assertions', () => {
   });
 
   //tags could be used for spec also
-  test('Text assertions @regression', async ({ page }) => {
+  test('text assertions @regression', async ({ page }) => {
     //textContent() - to extract text from specificly found element
     const basicForm = page.locator('nb-card', { hasText: 'Basic form' });
     const submitBtn = basicForm.locator('button');
@@ -29,7 +29,7 @@ test.describe('Assertions', () => {
     expect(await basicFormEmail.getAttribute('placeholder')).toBe('Email');
   });
 
-  test('Generic and locator asertions @test @regression', async ({ page }) => {
+  test('generic and locator asertions @test @regression', async ({ page }) => {
     const basicForm = page.locator('nb-card', { hasText: 'Basic form' });
     const basicSubmitBtn = basicForm.getByRole('button');
     const submitText = await basicSubmitBtn.textContent();

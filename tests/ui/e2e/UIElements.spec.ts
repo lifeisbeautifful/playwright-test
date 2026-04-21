@@ -3,20 +3,18 @@ import { expect } from '@playwright/test';
 import { sidebarTabs } from '../test-data/sidebarTabs';
 
 //npm start to start app on localhost
-test.describe('Test different type of ui elements', () => {
+test.describe('test different type of ui elements', () => {
   test.beforeEach('Navigate to source page', async ({ page }) => {
     await page.goto('/');
-    console.log('page url: ', page.url().toString());
-    console.log('env: ', String(process.env.LOCALHOST_URL));
     expect(page.url()).toBe(String(process.env.LOCALHOST_URL));
   });
 
-  test('Tooltip', async ({ sideBarComponent, tooltipPage }) => {
+  test('tooltip', async ({ sideBarComponent, tooltipPage }) => {
     await sideBarComponent.goToMenuItem(sidebarTabs.ModalOverlays, sidebarTabs.Tooltip);
     await tooltipPage.verifyRightBtnTooltip();
   });
 
-  test('Dialog', async ({ sideBarComponent, smartTablePage }) => {
+  test('dialog', async ({ sideBarComponent, smartTablePage }) => {
     const deleteEmail = 'mdo@gmail.com';
 
     await sideBarComponent.goToMenuItem(sidebarTabs.TablesData, sidebarTabs.SmartTable);
@@ -24,7 +22,7 @@ test.describe('Test different type of ui elements', () => {
   });
 
   //search by table column value
-  test('Table', async ({ sideBarComponent, smartTablePage }) => {
+  test('table', async ({ sideBarComponent, smartTablePage }) => {
     const changedUsername = 'text';
     const oldName = 'Sparrow';
     const oldAge = '11';
@@ -40,7 +38,7 @@ test.describe('Test different type of ui elements', () => {
     await smartTablePage.editColumnTextAvoidDuplication(oldAge, 2, newAge, 'Age');
   });
 
-  test('Verify table columns contain same value', async ({ sideBarComponent, smartTablePage }) => {
+  test('verify table columns contain same value', async ({ sideBarComponent, smartTablePage }) => {
     const existingAges = ['20', '30', '40'];
     const nonExistAge = '200';
     const columnName = 'Age';
@@ -54,14 +52,14 @@ test.describe('Test different type of ui elements', () => {
     await smartTablePage.verifyFilteringBy(columnName, 7, nonExistAge, false);
   });
 
-  test('Date picker', async ({ datePickerPage, sideBarComponent }) => {
+  test('date picker', async ({ datePickerPage, sideBarComponent }) => {
     await sideBarComponent.goToMenuItem(sidebarTabs.Forms, sidebarTabs.Datepicker);
 
     await datePickerPage.enterCommonDatePickerDate(20);
     await datePickerPage.enterRangeDatePickerDate(20, 25);
   });
 
-  test('Input', async ({ sideBarComponent, formLayoutPage }) => {
+  test('input', async ({ sideBarComponent, formLayoutPage }) => {
     const testValue = 'test2';
 
     await sideBarComponent.goToMenuItem(sidebarTabs.Forms, sidebarTabs.FormsLayouts);
@@ -69,7 +67,7 @@ test.describe('Test different type of ui elements', () => {
     await formLayoutPage.enterBasicEmail(testValue);
   });
 
-  test('Radio button', async ({ sideBarComponent, formLayoutPage }) => {
+  test('radio button', async ({ sideBarComponent, formLayoutPage }) => {
     const radioBtnNames = {
       one: 'Option 1',
       two: 'Option 2',
@@ -81,7 +79,7 @@ test.describe('Test different type of ui elements', () => {
     await formLayoutPage.verifyRadioBtnUnchecked([radioBtnNames.one, radioBtnNames.disabled]);
   });
 
-  test('Checkbox', async ({ sideBarComponent, toastr }) => {
+  test('checkbox', async ({ sideBarComponent, toastr }) => {
     await sideBarComponent.goToMenuItem(sidebarTabs.ModalOverlays, sidebarTabs.Toastr);
 
     await toastr.checkCheckbox('Prevent arising of duplicate toast');
@@ -89,7 +87,7 @@ test.describe('Test different type of ui elements', () => {
     await toastr.unCheckAllCheckboxes();
   });
 
-  test('Dropdown', async ({ header }) => {
+  test('dropdown', async ({ header }) => {
     const listOptions: Record<string, string> = {
       Light: 'rgb(255, 255, 255)',
       Dark: 'rgb(34, 43, 69)',

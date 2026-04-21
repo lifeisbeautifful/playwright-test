@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 
 //npm start to start app on localhost
-test.describe('Test POM methods', () => {
+test.describe('test POM methods', () => {
   //additionally if we want to retry specified tests
   test.describe.configure({ retries: 1 });
 
@@ -16,7 +16,7 @@ test.describe('Test POM methods', () => {
     expect(page.url()).toBe('http://localhost:4200/pages/iot-dashboard');
   });
 
-  test('Navigate', async ({ sideBarComponent }, testInfo) => {
+  test('navigate', async ({ sideBarComponent }, testInfo) => {
     if (testInfo.retry) {
       //Make some clean up
     }
@@ -24,7 +24,7 @@ test.describe('Test POM methods', () => {
     await sideBarComponent.goToMenuItem('Charts', 'Echarts');
   });
 
-  test('Form layout test', async ({ sideBarComponent, formLayoutPage }) => {
+  test('form layout test', async ({ sideBarComponent, formLayoutPage }) => {
     const randomName = faker.person.fullName();
     const randomNumber = faker.number.int().toString();
     const password = faker.number.int().toString();

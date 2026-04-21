@@ -6,6 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/bondar-artem/pw-practice-app.git"
   },
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve"
@@ -68,14 +69,18 @@
     "@fortawesome/fontawesome-free": "^5.2.0",
     "@types/leaflet": "1.2.3",
     "@types/node": "^12.12.70",
+    "@typescript-eslint/eslint-plugin": "^8.59.0",
+    "@typescript-eslint/parser": "^8.59.0",
     "codelyzer": "^0.0.28",
     "conventional-changelog-cli": "^2.2.2",
+    "eslint": "^10.2.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-playwright": "^2.10.2",
     "npm-run-all": "4.0.2",
     "prettier": "^3.8.3",
     "rimraf": "2.6.1",
     "stylelint": "^15.6.0",
     "ts-node": "3.2.2",
-    "tslint": "~6.1.0",
     "tslint-language-service": "^0.9.9",
     "typescript": "~4.6.4"
   }

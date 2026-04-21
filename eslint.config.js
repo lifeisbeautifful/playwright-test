@@ -1,0 +1,28 @@
+import tsParser from "@typescript-eslint/parser";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+import playwrightPlugin from "eslint-plugin-playwright";
+
+export default [
+  {
+    files: ["**/*.ts"],
+    plugins: {
+      "@typescript-eslint": tsPlugin,
+      "playwright": playwrightPlugin,
+    },
+    languageOptions: {
+      parser: tsParser,
+    },
+    rules: {
+      // Базові правила
+      "no-console": "warn",
+      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/no-explicit-any": "warn",
+      
+      // Правила для Playwright (QA-специфіка)
+      "playwright/no-skipped-test": "warn",       // Попередить, якщо забула .skip()
+      "playwright/no-focused-test": "error",      // Не дасть закомітити .only() (щоб не прогнати один тест на CI)
+      "playwright/missing-playwright-await": "error", // КРИТИЧНО: підсвітить забуті await перед expect/page
+      "playwright/prefer-lowercase-title": "warn", // Для однаковості назв тестів
+    },
+  },
+];

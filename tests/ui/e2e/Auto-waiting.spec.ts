@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Auto-waiting', () => {
+test.describe('auto-waiting', () => {
   //Modify timeout for entire suite
   test.beforeEach('Open Ajax website', async ({ page }, testInfo) => {
     await page.goto('http://uitestingplayground.com/ajax');
@@ -8,7 +8,7 @@ test.describe('Auto-waiting', () => {
     testInfo.setTimeout(testInfo.timeout + 20000);
   });
 
-  test('Test auto-waiting', async ({ page }) => {
+  test('test auto-waiting', async ({ page }) => {
     //This will auto wait for element
     //await page.locator(".bg-success").click();
 
@@ -25,7 +25,7 @@ test.describe('Auto-waiting', () => {
     await expect(ajaxButton).toHaveText('Data loaded with AJAX get request.', { timeout: 60000 });
   });
 
-  test('Auto-waiting options', async ({ page }) => {
+  test('auto-waiting options', async ({ page }) => {
     const ajaxButton = page.locator('.bg-success');
 
     //wait for element
@@ -45,7 +45,7 @@ test.describe('Auto-waiting', () => {
     expect(text).toContain('Data loaded with AJAX get request.');
   });
 
-  test('Timeouts', async ({ page }) => {
+  test('timeouts', async ({ page }) => {
     //to set timeout for specific test
     test.setTimeout(10000);
     //Increase test timeouts 3 time

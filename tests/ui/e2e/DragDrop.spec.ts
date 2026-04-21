@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Test drag and drop inside iframe', () => {
-  test('IFrame and Drag and drop', async ({ page }) => {
+test.describe('test drag and drop inside iframe', () => {
+  test('iFrame and Drag and drop', async ({ page }) => {
     await page.goto('./draganddrop');
     const elements = ['High Tatras 3', 'High Tatras 4'];
 
