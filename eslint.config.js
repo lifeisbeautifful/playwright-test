@@ -14,7 +14,7 @@ export default [
     },
     rules: {
       // Базові правила
-      "no-console": "warn",
+      "no-console": "error",
       "@typescript-eslint/no-unused-vars": "error",
       "@typescript-eslint/no-explicit-any": "warn",
       
