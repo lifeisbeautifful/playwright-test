@@ -2,10 +2,10 @@ version: '3.8'
 services:
   playwright-test:
     image: playwright-test
-    build: 
+    build:
       context: .
       dockerfile: ./Dockerfile
-    command: ["sh", "-c", "npm start & npx playwright test tests/POM.spec.ts"]
+    command: ['sh', '-c', 'npm start & npx playwright test tests/POM.spec.ts']
     volumes:
       - ./playwright-report/:/app/playwright-report
       - ./test-results/:/app/test-results

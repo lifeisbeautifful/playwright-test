@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "POM": "npx playwright test POM.spec.ts",
-    "start": "ng serve"
+    "start": "ng serve",
+    "check": "npx prettier --write ."
   },
   "keywords": [],
   "author": "",

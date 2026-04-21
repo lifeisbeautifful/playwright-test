@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
-import dotenv from "dotenv";
-import path from "path";
+import dotenv from 'dotenv';
+import path from 'path';
 
 /**
  * Read environment variables from file.
@@ -17,7 +17,7 @@ export default defineConfig({
   testDir: './',
   globalTimeout: 300000,
   expect: {
-    timeout: 6000
+    timeout: 6000,
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -29,9 +29,9 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   outputDir: 'ui/e2e/test-results',
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', { open: "never", outputFolder: 'ui/e2e/playwright-report', }]],
-    // ['json', { outputFile: "test-results/jsonReport.json" }],
-    // ['junit', { outputFile: "test-results/junitReport.xml" }]],
+  reporter: [['html', { open: 'never', outputFolder: 'ui/e2e/playwright-report' }]],
+  // ['json', { outputFile: "test-results/jsonReport.json" }],
+  // ['junit', { outputFile: "test-results/junitReport.xml" }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -49,16 +49,16 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-      testIgnore: 'DragDrop.spec.ts'
+      testIgnore: 'DragDrop.spec.ts',
     },
     {
       name: 'draganddrop',
       testMatch: 'DragDrop.spec.ts',
-      use: { 
+      use: {
         ...devices['Desktop Chrome'],
-        baseURL: 'https://www.globalsqa.com/demo-site/draganddrop'
+        baseURL: 'https://www.globalsqa.com/demo-site/draganddrop',
       },
-    }
+    },
 
     // {
     //   name: 'firefox',
