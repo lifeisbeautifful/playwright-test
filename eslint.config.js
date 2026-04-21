@@ -3,8 +3,18 @@ import tsPlugin from "@typescript-eslint/eslint-plugin";
 import playwrightPlugin from "eslint-plugin-playwright";
 
 export default [
+ {
+    // Глобальні ігнори (діють на весь проект від кореня)
+    ignores: [
+      "**/node_modules/**",
+      "tests/playwright-report/**", // шлях від кореня до звітів
+      "tests/test-results/**",      // шлях від кореня до результатів
+      "tests/dist/**",
+      "**/.env"
+    ]
+  },
   {
-    files: ["**/*.ts"],
+    files: ["tests/**/*.ts"],
     plugins: {
       "@typescript-eslint": tsPlugin,
       "playwright": playwrightPlugin,
@@ -23,6 +33,6 @@ export default [
       "playwright/no-focused-test": "error",      // Не дасть закомітити .only() (щоб не прогнати один тест на CI)
       "playwright/missing-playwright-await": "error", // КРИТИЧНО: підсвітить забуті await перед expect/page
       "playwright/prefer-lowercase-title": "warn", // Для однаковості назв тестів
-    },
+    }
   },
 ];
