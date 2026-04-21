@@ -4,7 +4,7 @@ test.describe('assertions', () => {
   test.beforeEach('Form layouts navigation', async ({ page }) => {
     await page.goto('/');
     await page.getByTitle('Forms').click();
-    console.log('test');
+    console.log('tes3');
     await page.getByTitle('Form Layouts').click();
   });
 
