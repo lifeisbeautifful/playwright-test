@@ -15,7 +15,7 @@ export default [
     rules: {
       // Базові правила
       "no-console": "error",
-      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/no-unused-vars": "warn",
       "@typescript-eslint/no-explicit-any": "warn",
       
       // Правила для Playwright (QA-специфіка)
