@@ -9,7 +9,8 @@
   "type": "module",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve"
+    "start": "ng serve",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@angular/animations": "^14.2.12",
@@ -82,6 +83,7 @@
     "stylelint": "^15.6.0",
     "ts-node": "3.2.2",
     "tslint-language-service": "^0.9.9",
-    "typescript": "~4.6.4"
+    "typescript": "~4.6.4",
+    "husky": "^8.0.0"
   }
 }
