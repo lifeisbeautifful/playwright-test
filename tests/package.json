@@ -6,10 +6,10 @@
   "scripts": {
     "POM": "npx playwright test POM.spec.ts",
     "start": "ng serve",
-    "check": "npx prettier --write .",
+    "format": "npx prettier --write .",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "fixlint": "npm run lint:fix && npm run format"
+    "fixlint": "npm run format && npm run lint:fix"
   },
   "lint-staged": {
     "*.ts": [
