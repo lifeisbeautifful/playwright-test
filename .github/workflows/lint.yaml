@@ -1,0 +1,28 @@
+name: Code Quality
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    # Встановлюємо робочу директорію для всіх кроків цієї job
+    defaults:
+      run:
+        working-directory: tests
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: tests/package-lock.json
+
+      - name: Install tests dependencies
+        run: npm ci
+
+      - name: Run Prettier
+        run: npx prettier --check .
+
+      - name: Run ESLint
+        run: npx eslint .

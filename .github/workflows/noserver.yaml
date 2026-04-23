@@ -39,6 +39,14 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit == 'true'
         run: npx playwright install-deps chromium
 
+      - name: Run Prettier check
+        working-directory: tests
+        run: npx prettier --check .
+
+      - name: Run ESLint check
+        working-directory: tests
+        run: npx eslint .
+        
       - name: Run Playwright tests
         working-directory: tests
         run: SKIP_SERVER=true npx playwright test --grep-invert @server
