@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 import { sidebarTabs } from '../test-data/sidebarTabs';
 
 //npm start to start app on localhost
-test.describe('test different type of ui elements', () => {
+test.describe('test different type of ui elements @server', () => {
   test.beforeEach('Navigate to source page', async ({ page }) => {
     await page.goto('/');
     expect(page.url()).toBe(String(process.env.LOCALHOST_URL));

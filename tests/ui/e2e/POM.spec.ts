@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 
 //npm start to start app on localhost
-test.describe('test POM methods', () => {
+test.describe('test POM methods @server', () => {
   //additionally if we want to retry specified tests
   test.describe.configure({ retries: 1 });
 

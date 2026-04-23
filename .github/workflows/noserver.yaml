@@ -17,9 +17,6 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install app dependencies
-        run: npm install --force 
-
       - name: Install tests dependencies
         working-directory: tests
         run: npm ci
@@ -30,9 +27,7 @@ jobs:
 
       - name: Run Playwright tests
         working-directory: tests
-        run: npx playwright test
-        env:
-          LOCALHOST_URL: ${{ secrets.LOCALHOST_URL }}
+        run: SKIP_SERVER=true npx playwright test --grep-invert @server
 
       - name: Upload report
         if: always()  # Тепер це частина кроку Upload report

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('assertions', () => {
+test.describe('assertions @server', () => {
   test.beforeEach('Form layouts navigation', async ({ page }) => {
     await page.goto('/');
     await page.getByTitle('Forms').click();
