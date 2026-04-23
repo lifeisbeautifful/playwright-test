@@ -1,7 +1,5 @@
 name: Playwright Tests
 on:
-  push:
-    branches: [ master ]
   workflow_dispatch:
 
 jobs:
@@ -46,7 +44,7 @@ jobs:
       - name: Run ESLint check
         working-directory: tests
         run: npx eslint .
-        
+
       - name: Run Playwright tests
         working-directory: tests
         run: SKIP_SERVER=true npx playwright test --grep-invert @server
