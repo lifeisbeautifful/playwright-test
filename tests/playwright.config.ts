@@ -92,12 +92,12 @@ export default defineConfig({
   ],
 
   /* Run your local dev server before starting the tests */
-  webServer: process.env.SKIP_SERVER
-    ? undefined
-    : {
+  webServer: process.argv.join(' ').includes('@server')
+    ? {
         command: 'npm run start',
         url: 'http://localhost:4200/',
         reuseExistingServer: !process.env.CI,
         timeout: 120 * 1000,
-      },
+      }
+    : undefined,
 });
