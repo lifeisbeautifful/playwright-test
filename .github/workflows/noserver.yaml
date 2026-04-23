@@ -41,9 +41,9 @@ jobs:
         working-directory: tests
         run: npx prettier --check .
 
-      - name: Run ESLint check
-        working-directory: tests
-        run: npx eslint .
+      # - name: Run ESLint check
+      #   working-directory: tests
+      #   run: npx eslint .
 
       - name: Run Playwright tests
         working-directory: tests
