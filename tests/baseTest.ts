@@ -8,7 +8,7 @@ type MyFixtures = {
 
 export const test = base.extend<MyFixtures>({
   apiContext: async ({ playwright }, use) => {
-    const authFile = JSON.parse(fs.readFileSync('tests/api/.auth/loginData.json', 'utf-8'));
+    const authFile = JSON.parse(fs.readFileSync('api/.auth/loginData.json', 'utf-8'));
     const token = authFile.origins[0].localStorage.find(
       (i: { name: string }) => i.name === 'jwtToken',
     )?.value;

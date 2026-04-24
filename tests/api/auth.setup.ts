@@ -2,9 +2,9 @@ import { test as setup } from '@playwright/test';
 // @ts-ignore
 import fs from 'fs';
 
-const authPath = 'tests/api/.auth/loginData.json';
+const authPath = 'api/.auth/loginData.json';
 
-setup('api authentication', async ({ request }) => {
+setup('api authentication @api', async ({ request }) => {
   //UI auth
   // await page.goto('https://conduit.bondaracademy.com/');
   // await page.getByRole('link', { name: 'Sign in' }).click();
