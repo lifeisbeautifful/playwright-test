@@ -47,6 +47,10 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'setup',
+      testMatch: 'tests/api/auth.setup.ts',
+    },
+    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
       testIgnore: 'DragDrop.spec.ts',
@@ -58,6 +62,12 @@ export default defineConfig({
         ...devices['Desktop Chrome'],
         baseURL: 'https://www.globalsqa.com/demo-site/draganddrop',
       },
+    },
+    {
+      name: 'API',
+      testMatch: 'tests/api/**/*.spec.ts',
+      use: { ...devices['Desktop Chrome'], storageState: 'tests/api/.auth/loginData.json' },
+      dependencies: ['setup'],
     },
 
     // {
