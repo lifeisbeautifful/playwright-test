@@ -2,8 +2,13 @@ import { test, expect } from '../baseTest';
 // @ts-ignore
 import data from './test-data/conduit.json' assert { type: 'json' };
 
-test.describe('api tests', () => {
+test.describe('api tests @api', () => {
   test.beforeEach('Navigate', async ({ page }) => {
+    //     Stub (Стаб — "Заглушка")
+    // Що це: Повна заміна відповіді сервера заздалегідь підготовленим статичним файлом або об'єктом.
+    // Коли: Коли тобі байдуже, що там на сервері. Ти просто кажеш: "На цей запит завжди відповідай цим JSON-ом".
+    // Мета: Тестування UI в повній ізоляції.
+    // якщо нема route.fetch() значить кол не пішов на сервер ми його перехопили і повністю підмінили і це стаб
     await page.route('*/**/api/tags', async (route) => {
       await route.fulfill({ body: JSON.stringify(data) });
     });
@@ -13,6 +18,11 @@ test.describe('api tests', () => {
 
   test('test mock', async ({ page }) => {
     await page.getByText(' Global Feed ').click();
+    //     Mock (Мок — "Імітація/Обман")
+    // Що це: Більш інтелектуальна підміна, де ти можеш перевіряти, чи був викликаний запит, скільки разів, або змінювати лише частину реальної відповіді сервера.
+    // Коли: Коли треба перевірити логіку взаємодії (наприклад, чи пішов запит після натискання кнопки).
+    // Мета: Тестування поведінки та взаємозв'язків.
+    // Є route.fetch() - реквест пішов нв сервер ми отримали респонс в якому підмінили якісь дані
     await page.route('*/**/api/articles*', async (route) => {
       const response = await route.fetch();
       const responseBody = await response.json();
