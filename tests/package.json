@@ -9,7 +9,10 @@
     "format": "npx prettier --write .",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "fixlint": "npm run format && npm run lint:fix"
+    "fixlint": "npm run format && npm run lint:fix",
+    "api": "npx playwright test --project=API",
+    "ui": "npx playwright test --grep-invert \"@\"",
+    "serverTests": "npx playwright test --grep @server"
   },
   "lint-staged": {
     "*.ts": [

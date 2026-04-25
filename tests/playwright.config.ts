@@ -24,9 +24,9 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 1 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 6 : undefined,
   outputDir: 'ui/e2e/test-results',
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html', { open: 'never', outputFolder: 'ui/e2e/playwright-report' }]],
@@ -48,7 +48,7 @@ export default defineConfig({
   projects: [
     {
       name: 'setup',
-      testMatch: 'tests/api/auth.setup.ts',
+      testMatch: 'api/auth.setup.ts',
     },
     {
       name: 'chromium',
@@ -66,7 +66,7 @@ export default defineConfig({
     {
       name: 'API',
       testMatch: 'tests/api/**/*.spec.ts',
-      use: { ...devices['Desktop Chrome'], storageState: 'tests/api/.auth/loginData.json' },
+      use: { ...devices['Desktop Chrome'], storageState: 'api/.auth/loginData.json' },
       dependencies: ['setup'],
     },
 
