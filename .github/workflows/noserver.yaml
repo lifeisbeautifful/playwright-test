@@ -10,6 +10,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Check CPU Cores
+        run: nproc # Покаже кількість ядер у консолі (для ubuntu-latest це буде 2)
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
