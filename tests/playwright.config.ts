@@ -26,10 +26,10 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 1 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 6 : undefined,
-  outputDir: 'ui/e2e/test-results',
+  workers: process.env.CI ? 4 : undefined,
+  outputDir: 'test-results',
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', { open: 'never', outputFolder: 'ui/e2e/playwright-report' }]],
+  reporter: [['html', { open: 'never', outputFolder: 'playwright-report' }]],
   // ['json', { outputFile: "test-results/jsonReport.json" }],
   // ['junit', { outputFile: "test-results/junitReport.xml" }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -107,7 +107,9 @@ export default defineConfig({
         command: 'npm run start',
         url: 'http://localhost:4200/',
         reuseExistingServer: !process.env.CI,
-        timeout: 120 * 1000,
+        timeout: 300 * 1000,
+        stdout: 'pipe',
+        stderr: 'pipe',
       }
     : undefined,
 });
