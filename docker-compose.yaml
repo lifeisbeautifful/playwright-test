@@ -4,7 +4,9 @@ services:
     build: 
       context: .
       dockerfile: ./Dockerfile
-    image: plw-tests
+    # Указуємо Docker завжди перевіряти оновлення імемджа в Registry
+    pull_policy: always
+    image: ${DOCKER_USERNAME}/plw-tests:${IMAGE_TAG:-latest}
     command: npm run test:docker
     volumes: 
       - ./tests:/app/tests # Код тестів (синхронізація)
