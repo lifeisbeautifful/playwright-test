@@ -13,7 +13,7 @@
     "api": "npx playwright test --project=API",
     "ui": "npx playwright test --grep-invert \"@\"",
     "serverTests": "npx playwright test --grep @server",
-    "test:docker": "npx prettier --check . && npm run api"
+    "test:docker": "npx prettier --check . && npm run ui"
   },
   "lint-staged": {
     "*.ts": [
