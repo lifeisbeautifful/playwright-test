@@ -39,7 +39,7 @@ jobs:
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           IMAGE_TAG: ${{ github.sha }}
-        run: docker compose -f docker-compose.ci.yml up --abort-on-container-exit --exit-code-from playwright-test
+        run: docker compose -f docker-compose.ci.yaml up --abort-on-container-exit --exit-code-from playwright-test
 
       - name: Upload report
         if: always()  # Тепер це частина кроку Upload report
