@@ -14,7 +14,7 @@ jobs:
         run: nproc # Покаже кількість ядер у консолі (для ubuntu-latest це буде 2)
 
       - name: Run tests via Compose
-        run: docker-compose up --build --abort-on-container-exit --exit-code-from playwright-test
+        run: docker compose up --build --abort-on-container-exit --exit-code-from playwright-test
 
       - name: Upload report
         if: always()  # Тепер це частина кроку Upload report
