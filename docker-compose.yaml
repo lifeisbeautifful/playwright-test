@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
     image: plw-tests
-    command: npm run api
+    command: npm run test:docker
     volumes: 
       - ./tests:/app/tests # Код тестів (синхронізація)
       - ./tests/playwright-report/:/app/tests/playwright-report

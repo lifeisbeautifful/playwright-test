@@ -13,7 +13,7 @@ test.describe('api tests @api', () => {
       await route.fulfill({ body: JSON.stringify(data) });
     });
 
-    await page.goto('https://conduit.bondaracademy.com/');
+    await page.goto('/');
   });
 
   test('test mock', async ({ page }) => {

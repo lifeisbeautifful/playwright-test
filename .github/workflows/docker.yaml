@@ -1,0 +1,25 @@
+name: Docker Tests
+on:
+  workflow_dispatch:
+
+jobs:
+  docker-test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check CPU Cores
+        run: nproc # Покаже кількість ядер у консолі (для ubuntu-latest це буде 2)
+
+      - name: Run tests via Compose
+        run: docker-compose up --build --abort-on-container-exit --exit-code-from playwright-test
+
+      - name: Upload report
+        if: always()  # Тепер це частина кроку Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: tests/playwright-report/ 
+          retention-days: 30

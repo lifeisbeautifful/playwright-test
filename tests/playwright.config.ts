@@ -66,7 +66,11 @@ export default defineConfig({
     {
       name: 'API',
       testMatch: 'tests/api/**/*.spec.ts',
-      use: { ...devices['Desktop Chrome'], storageState: 'api/.auth/loginData.json' },
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: 'api/.auth/loginData.json',
+        baseURL: 'https://conduit.bondaracademy.com/',
+      },
       dependencies: ['setup'],
     },
 
