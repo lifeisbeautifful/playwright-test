@@ -1,15 +1,15 @@
 services: 
   playwright-test:
     container_name: my-tests
-    # build: 
-    #   context: .
-    #   dockerfile: ./Dockerfile
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
     # # Указуємо Docker завжди перевіряти оновлення імемджа в Registry
-    # pull_policy: always
-    image: ${DOCKER_USERNAME}/plw-tests:${IMAGE_TAG:-latest}
+    #pull_policy: always
+    image: ${DOCKER_USERNAME}/plw-tests:latest
     command: npm run test:docker
     volumes: 
-      # - ./tests:/app/tests # Код тестів (синхронізація)
-      # - /app/tests/node_modules
+      - ./tests:/app/tests # Код тестів (синхронізація)
+      - /app/tests/node_modules # КРИТИЧНО для Windows/WSL
       - ./tests/playwright-report/:/app/tests/playwright-report
       - ./tests/test-results/:/app/tests/test-results
