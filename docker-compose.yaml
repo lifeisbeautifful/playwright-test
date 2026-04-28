@@ -8,5 +8,6 @@ services:
     command: npm run test:docker
     volumes: 
       - ./tests:/app/tests # Код тестів (синхронізація)
+      - /app/tests/node_modules
       - ./tests/playwright-report/:/app/tests/playwright-report
       - ./tests/test-results/:/app/tests/test-results
