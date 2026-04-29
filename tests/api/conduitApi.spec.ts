@@ -1,4 +1,5 @@
-import { test, expect } from '../baseTest';
+import { test, expect } from '../fixtures';
+import { articlePayloads } from './test-data/conduitTestData';
 // @ts-ignore
 import data from './test-data/conduit.json' assert { type: 'json' };
 
@@ -38,20 +39,8 @@ test.describe('api tests @api', () => {
     await expect(page.locator('app-article-list p').first()).toHaveText('test');
   });
 
-  test('delete article', async ({ page, apiContext }) => {
-    const articleResponse = await apiContext.post(
-      'https://conduit-api.bondaracademy.com/api/articles/',
-      {
-        data: {
-          article: {
-            title: 'New Test',
-            description: 'New Test',
-            body: 'New Test',
-            tagList: [],
-          },
-        },
-      },
-    );
+  test('delete article', async ({ page, conduitApiClient }) => {
+    const articleResponse = await conduitApiClient.createArticle(articlePayloads.newTestArticle);
 
     expect(articleResponse.status()).toEqual(201);
     await page.getByText(' Global Feed ').click();
@@ -62,7 +51,7 @@ test.describe('api tests @api', () => {
     await expect(page.locator('app-article-list h1').first()).not.toHaveText('New Test');
   });
 
-  test('intercept create article request', async ({ page, apiContext }) => {
+  test('intercept create article request', async ({ page, conduitApiClient }) => {
     await page.getByRole('link', { name: 'New Article' }).click();
     await page.getByPlaceholder('Article Title').fill('My test name');
     await page.getByPlaceholder("What's this article about?").fill('Test description');
@@ -80,10 +69,7 @@ test.describe('api tests @api', () => {
     await page.getByText(' Global Feed ').click();
     await expect(page.locator('app-article-list h1').first()).toHaveText('My test name');
 
-    const deleteResponse = await apiContext.delete(
-      `https://conduit-api.bondaracademy.com/api/articles/${slug}`,
-    );
-
+    const deleteResponse = await conduitApiClient.deleteArticle(slug);
     expect(deleteResponse.status()).toEqual(204);
   });
 });

@@ -1,6 +1,7 @@
 import tsParser from "@typescript-eslint/parser";
 import tsPlugin from "@typescript-eslint/eslint-plugin";
 import playwrightPlugin from "eslint-plugin-playwright";
+import eslintConfigPrettier from "eslint-config-prettier";
 
 export default [
  {
@@ -36,4 +37,5 @@ export default [
       "playwright/prefer-lowercase-title": "warn", // Для однаковості назв тестів
     }
   },
+  eslintConfigPrettier
 ];
