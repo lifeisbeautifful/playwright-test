@@ -1,3 +1,5 @@
+import { faker } from '@faker-js/faker';
+
 export interface ArticlePayload {
   title: string;
   description: string;
@@ -7,9 +9,9 @@ export interface ArticlePayload {
 
 export const articlePayloads: Record<string, ArticlePayload> = {
   newTestArticle: {
-    title: 'New Test',
-    description: 'New Test',
-    body: 'New Test',
-    tagList: [],
+    title: faker.lorem.sentence(),
+    description: faker.lorem.sentences(2),
+    body: faker.lorem.sentences(2),
+    tagList: [faker.word.noun(), faker.word.noun()],
   },
 };

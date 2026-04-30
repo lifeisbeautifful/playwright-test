@@ -43,12 +43,14 @@ test.describe('api tests @api', () => {
     const articleResponse = await conduitApiClient.createArticle(articlePayloads.newTestArticle);
 
     expect(articleResponse.status()).toEqual(201);
-    await page.getByText(' Global Feed ').click();
+    await page.getByText(articlePayloads.newTestArticle.title).click();
 
-    await page.getByText('New Test').first().click();
+    await page.getByText(articlePayloads.newTestArticle.title).first().click();
     await page.getByRole('button', { name: 'Delete Article' }).first().click();
     await page.getByText(' Global Feed ').click();
-    await expect(page.locator('app-article-list h1').first()).not.toHaveText('New Test');
+    await expect(page.locator('app-article-list h1').first()).not.toHaveText(
+      articlePayloads.newTestArticle.title,
+    );
   });
 
   test('intercept create article request', async ({ page, conduitApiClient }) => {
