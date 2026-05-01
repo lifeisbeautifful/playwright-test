@@ -1,7 +1,23 @@
 services: 
+  web-app:
+    image: ${DOCKER_USERNAME}/plw-tests:${IMAGE_TAG:-latest}
+    command: npm start
+    ports:
+      - "4200:4200"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4200"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   playwright-test:
     container_name: my-tests
     image: ${DOCKER_USERNAME}/plw-tests:${IMAGE_TAG:-latest}
+    depends_on:
+      web-app:
+        condition: service_healthy # чекатиме, поки сервер "прокинеться"
+    environment:
+      - BASE_URL=http://web-app:4200 # звертайся до сервера за іменем сервісу
     command: npm run test:docker
     volumes: 
       - ./tests/playwright-report/:/app/tests/playwright-report

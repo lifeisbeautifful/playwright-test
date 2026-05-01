@@ -10,7 +10,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "docker:pull": "docker compose -f docker-compose.ci.yaml pull",
+    "docker:run": "docker compose -f docker-compose.ci.yaml up --abort-on-container-exit --exit-code-from playwright-test",
+    "docker:errors": "docker logs my-tests | grep -1 -A 5 \"Error\""
   },
   "dependencies": {
     "@angular/animations": "^14.2.12",
