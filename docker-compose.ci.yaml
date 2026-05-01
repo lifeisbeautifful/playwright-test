@@ -5,10 +5,12 @@ services:
     ports:
       - "4200:4200"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:4200"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+      # Використовуємо wget, він частіше є в образах, ніж curl
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:4200 || exit 1"]
+      interval: 15s      # Робити перевірку кожні 15 секунд
+      timeout: 10s       # Чекати відповіді від wget до 10 секунд
+      retries: 12        # 12 спроб по 15 секунд = 180 секунд (3 хвилини)
+      start_period: 120s # Дві хвилини "фори" на компіляцію перед початком перевірок
 
   playwright-test:
     container_name: my-tests
