@@ -13,7 +13,7 @@ test.describe('test POM methods @server', () => {
   test.beforeEach('Navigate to source', async ({ page }) => {
     await page.waitForTimeout(5000);
     await page.goto('/');
-    expect(page.url()).toBe('http://localhost:4200/pages/iot-dashboard');
+    await expect(page).toHaveURL(/.*pages\/iot-dashboard/);
   });
 
   test('navigate', async ({ sideBarComponent }, testInfo) => {
