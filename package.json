@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0",
     "prepare": "husky install",
     "docker:pull": "docker compose -f docker-compose.ci.yaml pull",
     "docker:run": "docker compose -f docker-compose.ci.yaml up --abort-on-container-exit --exit-code-from playwright-test",
